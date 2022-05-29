@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spotify';
+  name: string = 'Limbert';
+  age: number = 45;
+  phone: null = null
 }
