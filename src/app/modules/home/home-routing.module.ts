@@ -4,7 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', //TODO: http://localhost:4200/
     component: HomePageComponent
   }
 ];
