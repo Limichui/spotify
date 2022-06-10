@@ -8,16 +8,19 @@ import { Subscription } from 'rxjs';
   templateUrl: './tracks-page.component.html',
   styleUrls: ['./tracks-page.component.css']
 })
-export class TracksPageComponent implements OnInit {
+export class TracksPageComponent implements OnInit, OnDestroy {
   tracksTrending: Array<TrackModel> = []
   tracksRandom: Array<TrackModel> = []
-
   listObservers$: Array<Subscription> = []
 
   constructor(private TrackService: TrackService) { }
 
   ngOnInit(): void {
-
+    this.TrackService.getAllTracks$()
+    .subscribe(response => {
+      console.log('--->',response)
+    });
+    
   }
 
   ngOnDestroy(): void {
