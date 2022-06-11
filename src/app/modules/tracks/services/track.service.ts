@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, mergeMap, tap } from 'rxjs/operators';
+import { map, mergeMap, tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -38,12 +38,16 @@ export class TrackService {
     return this.http.get(`${this.URL}/tracks`)
     .pipe(
       tap(data => console.log('KO KO KO', data)),
-      mergeMap(({ data }: any) => this.skipById(data, 1)
-      ),
+      mergeMap(({ data }: any) => this.skipById(data, 1)),
       //map((dataRevertida) => { //TODO: Aplicar un filtro comun de array
         //return dataRevertida.filter((track: TrackModel) => track._id !== 1)
       //})
-      tap(data => console.log('OK OK OK', data))
+      tap(data => console.log('OK OK OK', data)),
+      catchError((err) => {
+        const { status, statusText, url} = err;
+        console.log('Error: Algo paso', [status, statusText]);
+        return of([])
+      })
     )
   }
 }

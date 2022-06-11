@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './modules/home/pages/home-page/home-page.component';
 
 
-const routes: Routes = [
+const routes: Routes = [ //TODO: router-oulet (Padre)
   {
     path: 'auth', //TODO: localhost:4200/auth
     loadChildren:() => import(`./modules/auth/auth.module`).then(m => m.AuthModule)
