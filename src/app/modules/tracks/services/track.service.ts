@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, mergeMap, tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 
