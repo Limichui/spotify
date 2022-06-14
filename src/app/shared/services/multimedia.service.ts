@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { BehaviorSubject, Observable, Observer, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,23 @@ export class MultimediaService {
 
 callback:EventEmitter<any> = new EventEmitter<any>()
 
-  myObservable1$: Observable<any> = new Observable()
+  //myObservable1$: Observable<any> = new Observable()
+  //myObservable1$: Subject<any> = new Subject()
+  myObservable1$: BehaviorSubject<any> = new BehaviorSubject('Agua')
 
   constructor() { 
-    this.myObservable1$ = new Observable(
+    setTimeout(() => {
+      this.myObservable1$.next('Envia agua')
+    },1000)
+
+    setTimeout(() => {
+      this.myObservable1$.next('Envia agua')
+    },2000)
+
+    setTimeout(() => {
+      this.myObservable1$.next('XXXX')
+    },3500)
+    /* this.myObservable1$ = new Observable(
       (observer:Observer<any>) => {
         observer.next('=> Agua OK')
         
@@ -27,6 +40,6 @@ callback:EventEmitter<any> = new EventEmitter<any>()
           observer.error('=> Agua no OK')
         },3500)
       }
-    )
+    )*/ 
   }
 }

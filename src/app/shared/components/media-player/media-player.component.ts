@@ -26,7 +26,7 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
     const observer1$ = this.multimediaService.myObservable1$
     .subscribe({
       next: (responseOK) => {
-        console.log('El agua lega perfecto!', responseOK);
+        console.log('El agua llega perfecto!', responseOK);
       },
       error: (responseFail) => {
         console.log('Se tapo la tuberia', responseFail);
